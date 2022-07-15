@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>ChangeLog</title>
+      <link href="/posts/72fee242.html"/>
+      <url>/posts/72fee242.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="更新日志，记录网站的一点点变化"><a href="#更新日志，记录网站的一点点变化" class="headerlink" title="更新日志，记录网站的一点点变化"></a>更新日志，记录网站的一点点变化</h1><h2 id="7-14"><a href="#7-14" class="headerlink" title="7.14"></a>7.14</h2><h3 id="一级目录导航"><a href="#一级目录导航" class="headerlink" title="一级目录导航"></a>一级目录导航</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;xxx&quot;</span><br></pre></td></tr></table></figure><p>会在&#x2F;source下创建xxx的目录，对应配置文件 <strong>.comfig</strong>中menu配置，需要在后面加入如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx: /xxx的目录地址/ || fas fa -对应的形状</span><br></pre></td></tr></table></figure><p><img src="http://1laplce.oss-cn-hangzhou.aliyuncs.com/img/image-20220714202202935.png" alt="image-20220714202202935"></p><h3 id="二级目录导航"><a href="#二级目录导航" class="headerlink" title="二级目录导航"></a>二级目录导航</h3><p>二级目录导航其实创建方式与一级一样，不过需要像上图中List下的Music那样修改即可</p><h3 id="网易云音乐外链"><a href="#网易云音乐外链" class="headerlink" title="网易云音乐外链"></a>网易云音乐外链</h3><p>网易云音乐html可以在网页版界面找到自动生成html播放器的链接：</p><img src="http://1laplce.oss-cn-hangzhou.aliyuncs.com/img/image-20220714202640176.png" alt="image-20220714202640176" style="zoom:50%;" /><p><em>不过LoveStory这首歌受版权保护，不能生成外链播放器可以找免费版的</em></p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="//music.163.com/outchain/player?type=2&id=1904167521&auto=0&height=66"></iframe><h3 id="副标题subtitle"><a href="#副标题subtitle" class="headerlink" title="副标题subtitle"></a>副标题subtitle</h3><p>可以在**.config**设置</p><img src="http://1laplce.oss-cn-hangzhou.aliyuncs.com/img/image-20220714212400998.png" alt="image-20220714212400998" style="zoom:50%;" /><h2 id="7-15"><a href="#7-15" class="headerlink" title="7.15"></a>7.15</h2><h3 id="加入字数统计"><a href="#加入字数统计" class="headerlink" title="加入字数统计"></a>加入字数统计</h3><p>在blog根目录下安装wordcount插件，cmd命令如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br></pre></td></tr></table></figure><p><img src="http://1laplce.oss-cn-hangzhou.aliyuncs.com/img/image-20220715122958701.png" alt="image-20220715122958701"></p><h3 id="更换page的banner图"><a href="#更换page的banner图" class="headerlink" title="更换page的banner图"></a>更换page的banner图</h3><p>废了好大劲，在网页F12查找到banner图的目录，是在header里面的：</p><img src="C:/Users/lc299/AppData/Roaming/Typora/typora-user-images/image-20220715181531144.png" alt="image-20220715181531144" style="zoom: 33%;" /><p>但是找到这个文件夹按照其他几个目录的格式修改后，并在.config配置文件添加img发现并没啥用。</p><img src="http://1laplce.oss-cn-hangzhou.aliyuncs.com/img/image-20220715180208516.png" alt="image-20220715180208516" style="zoom:33%;" /><p>找了别人的文档发现是在对应的index.md直接加top_img（不是cover!!）即可：</p><blockquote><p>其它页面 （tags&#x2F;categories&#x2F;自建页面）和文章页的top_img，请到对应的 md 页面设置front-matter中的top_img。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> ChangeLog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> changelog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test</title>
+      <link href="/posts/d87f7e0c.html"/>
+      <url>/posts/d87f7e0c.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><a href="https://novnan.github.io/Hexo/hexo-draft/">使用草稿功能</a></p><ul><li>创建新草稿</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure><ul><li>本机预览草稿</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo S --draft</span><br></pre></td></tr></table></figure><ul><li>将草稿移动到_post文件夹</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo P &lt;filename&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+            <tag> study </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/posts/0.html"/>
+      <url>/posts/0.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="你好，这里是Laplace的烦恼空间"><a href="#你好，这里是Laplace的烦恼空间" class="headerlink" title="你好，这里是Laplace的烦恼空间"></a>你好，这里是Laplace的烦恼空间</h1>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
