@@ -1,0 +1,829 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>fushi | laplace的烦恼空间</title><meta name="keywords" content="EE"><meta name="author" content="laplace"><meta name="copyright" content="laplace"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="通信原理1.通信的基本知识 分贝的意义 dBm mw dB之间转换  dBm :10lg功率mw   模拟信号与数字信号区别  提高信息可靠性  考虑增大信噪比的方式：低进制 、信道均衡、最佳接收、扩频通信   比较两个模拟传输系统的性能  数字通讯系统的组成  信源-信源编码器-信道编码器-数字调制器-信道-数字解调器-信道译码器-信源编码器-信宿    2.随机信号分析 高斯过程有啥特点  通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fushi">
+<meta property="og:url" content="http://example.com/posts/434ccb04.html">
+<meta property="og:site_name" content="laplace的烦恼空间">
+<meta property="og:description" content="通信原理1.通信的基本知识 分贝的意义 dBm mw dB之间转换  dBm :10lg功率mw   模拟信号与数字信号区别  提高信息可靠性  考虑增大信噪比的方式：低进制 、信道均衡、最佳接收、扩频通信   比较两个模拟传输系统的性能  数字通讯系统的组成  信源-信源编码器-信道编码器-数字调制器-信道-数字解调器-信道译码器-信源编码器-信宿    2.随机信号分析 高斯过程有啥特点  通">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2023-03-18T07:26:09.000Z">
+<meta property="article:modified_time" content="2023-03-18T07:27:23.892Z">
+<meta property="article:author" content="laplace">
+<meta property="article:tag" content="EE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/434ccb04"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'fushi',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-18 15:27:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://laplace2.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 好玩的</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/fallin/"><i class="fa-fw fas fa-heart"></i><span> fallin</span></a></li><li><a class="site-page child" href="/EE/"><i class="fa-fw fab fa-etsy"></i><span> EE</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">laplace的烦恼空间</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 好玩的</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/fallin/"><i class="fa-fw fas fa-heart"></i><span> fallin</span></a></li><li><a class="site-page child" href="/EE/"><i class="fa-fw fab fa-etsy"></i><span> EE</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">fushi</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-18T07:26:09.000Z" title="发表于 2023-03-18 15:26:09">2023-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-18T07:27:23.892Z" title="更新于 2023-03-18 15:27:23">2023-03-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="通信原理"><a href="#通信原理" class="headerlink" title="通信原理"></a>通信原理</h1><h2 id="1-通信的基本知识"><a href="#1-通信的基本知识" class="headerlink" title="1.通信的基本知识"></a>1.通信的基本知识</h2><ul>
+<li><p>分贝的意义 dBm mw dB之间转换</p>
+<blockquote>
+<p>dBm :10lg功率mw</p>
+</blockquote>
+</li>
+<li><p>模拟信号与数字信号区别</p>
+</li>
+<li><p>提高信息可靠性</p>
+<blockquote>
+<p>考虑增大信噪比的方式：低进制 、信道均衡、最佳接收、扩频通信</p>
+</blockquote>
+</li>
+<li><p>比较两个模拟传输系统的性能</p>
+</li>
+<li><p>数字通讯系统的组成</p>
+<blockquote>
+<p>信源-信源编码器-信道编码器-数字调制器-信道-数字解调器-信道译码器-信源编码器-信宿</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-随机信号分析"><a href="#2-随机信号分析" class="headerlink" title="2.随机信号分析"></a>2.随机信号分析</h2><ul>
+<li><p>高斯过程有啥特点</p>
+<blockquote>
+<p>通过线性系统依然是高斯；不同时刻的随机变量相互独立；平稳遍历</p>
+</blockquote>
+</li>
+<li><p>什么是随机过程 随机变量</p>
+</li>
+<li><p>窄带高斯过程</p>
+<blockquote>
+<p>高斯带宽远远小于中心频率</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-模拟通信系统"><a href="#3-模拟通信系统" class="headerlink" title="3.模拟通信系统"></a>3.模拟通信系统</h2><ul>
+<li><p>调制的意义</p>
+<blockquote>
+<p>频谱搬移，减小天线尺寸；方便频分复用；用带宽换取信噪比</p>
+</blockquote>
+</li>
+<li><p>单边带调制的优点</p>
+<blockquote>
+<p>节约信号传输中对信道带宽的占用（上下 边带包含了所有频谱成分）</p>
+</blockquote>
+</li>
+<li><p>角度调制牺牲带宽来换取高的抗噪能力</p>
+</li>
+<li><p>如何评判系统的抗噪声性能 DSB与SSB抗噪声性能相同</p>
+<blockquote>
+<p>DSB的上下两个边带都包含所有的频谱信息，只选取其中一个边带可以节省一半的带宽；SSB信号功率与噪声功率都是DSB的一半</p>
+</blockquote>
+</li>
+<li><p>图像和伴音的调制方式</p>
+<blockquote>
+<p>图像用VSB，声音用FM</p>
+</blockquote>
+</li>
+<li><p>VSB发送滤波器满足的条件</p>
+</li>
+<li><p>包络检波的原理，优缺点</p>
+<blockquote>
+<p>调幅信号的一种，具有恒定的包络，用二极管单向过滤后再进行低通滤波</p>
+<p>结构简单，成本低；浪费功率</p>
+</blockquote>
+</li>
+<li><p>FM预加重技术的原理</p>
+</li>
+<li><p>门限效应<br>解调输入信噪比降低到一个特定的值后，输出信噪比急剧恶化；非线性特性；非相干解调；</p>
+</li>
+<li><p>AM、DSB、SSB、FM、PM、VSB的基本框图、</p>
+</li>
+</ul>
+<h2 id="4-数字信号的基带传输"><a href="#4-数字信号的基带传输" class="headerlink" title="4.数字信号的基带传输"></a>4.数字信号的基带传输</h2><ul>
+<li>基带调制和频带调制分别是什么</li>
+<li>数字脉冲调制3种基本方法<br>脉冲幅度调制的频带利用率高</li>
+<li>数字基带传输码型设计遵循的原则 P89</li>
+<li>AMI、HDB3码的优缺点</li>
+<li>数字基带系统的误码率与什么有关</li>
+<li>什么是码间干扰，怎么产生</li>
+<li>奈奎斯特第一准则 奈奎斯特速率 奈奎斯特带宽<br>无码间干扰传输的最大符号速率</li>
+<li>均衡的基本思想</li>
+<li>什么是匹配滤波器</li>
+<li>时钟提取的方法</li>
+</ul>
+<h2 id="5-数字信号的频带传输"><a href="#5-数字信号的频带传输" class="headerlink" title="5.数字信号的频带传输"></a>5.数字信号的频带传输</h2><ul>
+<li>BPSK与DPSK的区别</li>
+<li>相位模糊现象</li>
+<li>QPSK的改进方法</li>
+<li>OQPSK的原理	p149</li>
+<li>载波提取（同步）的方法</li>
+<li>MSK的特点、GMSK</li>
+<li>增量调制</li>
+<li>最大似然准则 最大后验概率准则 等价条件</li>
+</ul>
+<h2 id="6-信源编码"><a href="#6-信源编码" class="headerlink" title="6.信源编码"></a>6.信源编码</h2><ul>
+<li>什么是信源编码</li>
+<li>消息、信号、信息的区别</li>
+<li>离散信源的记忆性指什么</li>
+<li>什么是信息熵</li>
+<li>模拟信号数字化的基本步骤</li>
+<li>低通信号抽样定理</li>
+<li>抽样时产生频谱混叠的原因</li>
+<li>采用折叠码的好处</li>
+<li>A律PCM设计目标与特点</li>
+<li>信道复用方式与实例</li>
+</ul>
+<h2 id="7-信道与信道编码"><a href="#7-信道与信道编码" class="headerlink" title="7.信道与信道编码"></a>7.信道与信道编码</h2><ul>
+<li>什么是恒参信道、随参信道（特点：具有多径效应）</li>
+<li>什么是群延时</li>
+<li>多径传播的的危害；改善的措施</li>
+<li>频率选择性衰落、平坦性衰落</li>
+<li>瑞利信道</li>
+<li>香农公式及其意义</li>
+<li>分集接收技术P271</li>
+<li>支路合并技术</li>
+<li>信源编码与信道编码的区别</li>
+<li>随即差错 突发差错</li>
+<li>检错与纠错</li>
+<li>什么是重传反馈</li>
+<li>什么是完备码</li>
+<li>汉明码的特点</li>
+<li>卷积码</li>
+<li>维特比译码</li>
+<li>循环冗余校验码、BCH码、RS码</li>
+</ul>
+<h2 id="8-扩频通信-OFDM"><a href="#8-扩频通信-OFDM" class="headerlink" title="8.扩频通信 OFDM"></a>8.扩频通信 OFDM</h2><ul>
+<li>哈达玛矩阵</li>
+<li>什么是m序列</li>
+<li>什么是扩频通信&#x2F;直接序列扩频</li>
+<li>rake接收</li>
+<li>什么是OFDM&#x2F;优缺点</li>
+<li>OFDM保护间隔＆ 循环前缀有什么用</li>
+</ul>
+<h1 id="电磁场与电磁波"><a href="#电磁场与电磁波" class="headerlink" title="电磁场与电磁波"></a>电磁场与电磁波</h1><h2 id="1-矢量分析"><a href="#1-矢量分析" class="headerlink" title="1.矢量分析"></a>1.矢量分析</h2><ul>
+<li><p>等值面</p>
+</li>
+<li><p>梯度，方向导数，通量</p>
+</li>
+<li><p>无旋场 ：静电场，无散场：恒磁场</p>
+</li>
+<li><p>！laplace运算 </p>
+</li>
+<li><p>亥姆霍兹定理</p>
+<blockquote>
+<p>矢量场可以表示为一个标量函数的梯度和一个矢量函数的旋度之和</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-静电场与恒定电场"><a href="#2-静电场与恒定电场" class="headerlink" title="2.静电场与恒定电场"></a>2.静电场与恒定电场</h2><ul>
+<li><p>真空中高斯定理的积分形式&#x2F;微分形式 </p>
+<blockquote>
+<p>$ \int E ds&#x3D;\frac{Q}{\varepsilon}$</p>
+<p>$ \bigtriangledown ·E &#x3D;\frac{\rho}{\varepsilon}$</p>
+</blockquote>
+</li>
+<li><p>电位线&#x2F;等位面</p>
+</li>
+<li><p>感应电荷与极化电荷的区别</p>
+<blockquote>
+<p>感应电荷可以抵消外电场的作用，使导体内部电场处处为0</p>
+<p>极化电荷产生电场不足以抵消外电场，</p>
+</blockquote>
+</li>
+<li><p>静电场中的D(电位移矢量)、E、P(极化强度)的关系</p>
+<blockquote>
+<p>$D&#x3D;\varepsilon_0 E$   (真空中)</p>
+<p>$P&#x3D;\varepsilon_0\chi E$</p>
+<p>$D&#x3D;\varepsilon E $     (介质中)</p>
+</blockquote>
+</li>
+<li><p>Laplace方程与泊松方程的区别</p>
+<blockquote>
+<p>有电荷-泊松方程</p>
+<p>无电荷-Laplace方程</p>
+</blockquote>
+</li>
+<li><p>什么是电容</p>
+<blockquote>
+<p>经典系统的储能，电位与电量之间的关系</p>
+</blockquote>
+</li>
+<li><p>什么是恒定电场</p>
+<blockquote>
+<p>电荷的分布不随时间变化</p>
+</blockquote>
+</li>
+<li><p>静电场与恒定电场的比拟关系</p>
+<blockquote>
+<p>D~J</p>
+<p>E~E</p>
+<p>$\varepsilon$~$\rho$</p>
+<p>q~I</p>
+</blockquote>
+</li>
+<li><p>电流连续性方程</p>
+<blockquote>
+<p>电荷守恒，电流密度通量为0</p>
+</blockquote>
+</li>
+<li><p>霍尔效应</p>
+<blockquote>
+<p>电流垂直于磁场通过半导体时，会产生一垂直的电场，致使载流子偏转</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-恒定磁场"><a href="#3-恒定磁场" class="headerlink" title="3.恒定磁场"></a>3.恒定磁场</h2><ul>
+<li><p>恒定磁场的性质</p>
+<blockquote>
+<p>散度为0，无源无散</p>
+</blockquote>
+</li>
+<li><p>电介质极化与磁介质磁化区别</p>
+<blockquote>
+<p>电介质：极化电场削弱原电场</p>
+<p>磁介质：既可削弱，也可增强</p>
+</blockquote>
+</li>
+<li><p>磁场基本方程</p>
+<blockquote>
+<p>$\int B·dS&#x3D;0$</p>
+<p>$\bigtriangledown ·B&#x3D;0$</p>
+<p>$\int Hdl&#x3D;J$</p>
+<p>$\bigtriangledown ·H&#x3D;I$</p>
+<p>表明磁场与无源场，有旋场</p>
+</blockquote>
+</li>
+<li><p>电场与磁场的边界条件（一个介质到另一个介质）</p>
+<blockquote>
+<p>电场：切向连续。法向：$D_1-D_2&#x3D;\sigma$</p>
+<p>磁场：法向连续。切向：$H_1-H_2&#x3D;J$</p>
+</blockquote>
+</li>
+<li><p>通电线圈磁场应用举例</p>
+<blockquote>
+<p>通电线圈产生强磁场，借助抗磁物质的特性，让一个抗磁体(青蛙)悬浮起来。</p>
+<p>磁悬浮：</p>
+<p>电磁炉：线圈通交变电流，产生交变磁场。导体产生感应电流，产生电阻热&#x2F;摩擦热</p>
+</blockquote>
+</li>
+<li><p>自电感和互电感的区别，与什么有关</p>
+<blockquote>
+<p>自电感：电流产生的磁场与回路自身相交的磁链&#x2F;该电流</p>
+<p>互电感：与其他回路产生的磁链</p>
+<p>自感只与自身线圈尺寸有关，互感与两个线圈的位置、各自尺寸有关，与电流都无关联</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-交变电磁场"><a href="#4-交变电磁场" class="headerlink" title="4.交变电磁场"></a>4.交变电磁场</h2><ul>
+<li><p>唯一性定理：</p>
+<blockquote>
+<p>既满足Laplace定理，又满足边界条件的解是唯一的</p>
+</blockquote>
+</li>
+<li><p>麦克斯韦方程组说明了什么</p>
+<blockquote>
+<p>变化的磁场产生电场，变化的电场产生磁场；</p>
+<p>电磁波是电磁场的运动形式</p>
+<p>电磁波在真空中传播速度为光速</p>
+</blockquote>
+</li>
+<li><p>波印廷定理的物理意义</p>
+<blockquote>
+<p>$S&#x3D;E×H$</p>
+<p>单位时间内通过单位面积的电磁场能量。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="5-均匀平面波"><a href="#5-均匀平面波" class="headerlink" title="5.均匀平面波"></a>5.均匀平面波</h2><ul>
+<li><p>什么是均匀平面波</p>
+<blockquote>
+<p>等相位面为无限大平面的电磁波为平面波，</p>
+</blockquote>
+</li>
+<li><p>什么是相速度</p>
+<blockquote>
+<p>等相位面的传播速度 </p>
+</blockquote>
+</li>
+<li><p>TEM波</p>
+<blockquote>
+<p>在传播方向没有场分量存在的电磁波</p>
+</blockquote>
+</li>
+<li><p>什么是波阻抗</p>
+<blockquote>
+<p>$\eta&#x3D;\frac{E_x}{H_y}$</p>
+<p>真空中为377Ω</p>
+</blockquote>
+</li>
+<li><p>什么是电磁波的极化</p>
+<blockquote>
+<p>波场矢量（电场强度的大小和方向）随时间变化的规律</p>
+</blockquote>
+</li>
+<li><p>电磁波的色散</p>
+<blockquote>
+<p>电磁波的相速度随频率而变，介质对不同频率的电磁波的传播速率，折射系数等都不同，于是不同频率的电磁波会分开，这就是色散效应</p>
+</blockquote>
+</li>
+<li><p>良导体 良介质</p>
+<blockquote>
+<p>损耗角正切$tan\delta $</p>
+<p>0:理想介质</p>
+<p>&lt;&lt;1 :良介质（低损耗介质）</p>
+<p>》1:良导体</p>
+<p>∞：理想导体</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">趋肤效应</b></p>
+<blockquote>
+<p>波从表面进入导电媒介越深，波的幅度就会越小，电磁波的能量就越弱；在良导体中趋肤效应更严重</p>
+</blockquote>
+</li>
+<li><p>什么是表面电流</p>
+<blockquote>
+<p>在良导体中，其厚度远远大于其趋肤深度，电磁波传播有限厚度后，传导电流耗尽，所以可以看作在其表面</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="6-均匀平面波的反射与折射"><a href="#6-均匀平面波的反射与折射" class="headerlink" title="6.均匀平面波的反射与折射"></a>6.均匀平面波的反射与折射</h2><ul>
+<li><p>什么是驻波系数</p>
+<blockquote>
+<p>合成波电场强度最大与最小值之比</p>
+</blockquote>
+</li>
+<li><p>垂直极化波；水平极化波</p>
+<blockquote>
+<p>电场强度垂直&#x2F;平行于入射平面</p>
+</blockquote>
+</li>
+<li><p>什么是行波；驻波</p>
+<blockquote>
+<p>行波：随着时间变化，等相位面也沿着空间位置变化</p>
+<p>驻波：随着时间变化，波节、波腹的空间位置不变;频率相同，传输方向相反的两种波，沿传输线形成的分布状态</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="7-导行电磁波"><a href="#7-导行电磁波" class="headerlink" title="7.导行电磁波"></a>7.导行电磁波</h2><ul>
+<li><p>导波系统</p>
+<blockquote>
+<p>波导：能够定向引导电磁波传输的装置，被引导的称为导波</p>
+</blockquote>
+</li>
+<li><p>TM波、TE波</p>
+<blockquote>
+<p>电磁波传播方向为z轴</p>
+<p>TEM波：传播方向无任何分量，平行双线；同轴线</p>
+<p>TM：传播方向只有电场分量，横磁波，矩形波导；圆波导<br>TE：传播方向只有磁场分量，横电波</p>
+</blockquote>
+</li>
+<li><p>研究电磁波特性有两种方法：场和路</p>
+</li>
+<li><p>传输线驻波系数、输入阻抗是什么？与什么有关</p>
+<blockquote>
+<p>驻波系数：传输线上电压最大值与最小值之比<br>输入阻抗：从该点向负载方向看去的电压与电流之比；与特征阻抗、负载阻抗、和距离终端的位置有关</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">传播模式是什么？</b></p>
+<blockquote>
+<p>波导中的导波在横截面处呈驻波状态，m、n分别表示沿x方向和y方向半驻波的个数</p>
+</blockquote>
+</li>
+<li><p>k值是什么，导波特性随k值如何变化</p>
+<blockquote>
+<p>波矢量，大小为波数k，$k&#x3D;\frac{2\pi}{\lambda}$,当频率很高，k&gt;$k_c$,导波在波导中无衰减</p>
+<p>当k&lt;$k_c$，电磁波沿传播方向衰减，称为截止</p>
+</blockquote>
+</li>
+<li><p>什么是简并模</p>
+<blockquote>
+<p>在矩形波导中可以同时出现各种TE、TM模和其线性组合，波导可形成多模传输，而截至波长相等的模称为简并模</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="微波原理"><a href="#微波原理" class="headerlink" title="微波原理"></a>微波原理</h1><h2 id="1-电磁场理论"><a href="#1-电磁场理论" class="headerlink" title="1.电磁场理论"></a>1.电磁场理论</h2><ul>
+<li><p>什么是微波</p>
+<blockquote>
+<p>介于超短波与和红外线之间的波段，300MHz<del>3000GHz，1m</del>0.1mm</p>
+<p>主要特点：穿透性，热效应特性，宽频带特性</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">微波通信的特点</b></p>
+<blockquote>
+<p>频率高，频带宽，信道容量大；低时延；传输质量高，稳定；快速部署，运维成本低</p>
+</blockquote>
+</li>
+<li><p>几种抗衰落技术</p>
+<blockquote>
+<p><b style="color:red">分集接收</b>:采用两种或两种以上的方法接收同一信号，将接收到的信号分为几路独立的信号，然后按照不同的规则进行合并</p>
+<p>自适应均衡技术</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">麦克斯韦方程组</b></p>
+<blockquote>
+<p>变化的磁场产生电场 电场的旋度&#x3D;磁场求导</p>
+<p>变化的电场产生磁场 磁场的旋度&#x3D;电场求导+J</p>
+<p>电场的散度为电荷密度，有源场</p>
+<p>磁场的散度为0，无源场</p>
+</blockquote>
+</li>
+<li><p>什么是传输线</p>
+<blockquote>
+<p>传输微波能量和信息</p>
+</blockquote>
+</li>
+<li><p>长线与短线的界定</p>
+<blockquote>
+<p>电尺寸的长短：$\frac{l}{\lambda}$</p>
+</blockquote>
+</li>
+<li><p>趋肤深度</p>
+<blockquote>
+<p>信号的电流密度沿导体横界面的径向自外而内呈指数下降。当信号幅度降低到导体表面处信号幅度值的1&#x2F;e或36.8%时的径向临界深度叫趋肤深度或渗透深度</p>
+</blockquote>
+</li>
+<li><p>亥姆霍兹方程</p>
+<blockquote>
+<p>$\nabla ^2 A+k^2A&#x3D;0$</p>
+<p>A为E或者H</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">什么是平面波</b></p>
+<blockquote>
+<p>等相位面是平面的波</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">什么是极化</b></p>
+<blockquote>
+<p>电场强度的大小和方向随时间规律性变化</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-传输线的特征参数"><a href="#2-传输线的特征参数" class="headerlink" title="2.传输线的特征参数"></a>2.传输线的特征参数</h2><ul>
+<li><p>传播常数</p>
+<blockquote>
+<p>$\gamma&#x3D;\alpha(衰减常数)+j\beta(相位常数)$</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">什么是特征阻抗</b></p>
+<blockquote>
+<p>行波电压与行波电流之比</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">什么是波阻抗</b></p>
+<blockquote>
+<p>对于无损输电线路：$Z&#x3D;\sqrt{\frac{L}{C}}$</p>
+<p>对于电磁场理论：$Z&#x3D;\frac{E_x}{H_y}$,真空中为377Ω</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">什么是反射系数</b></p>
+<blockquote>
+<p>传输线任意一点反射波电压与入射波电压的比值</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">传输线工作状态</b></p>
+<blockquote>
+<p>行波状态：无反射，阻抗匹配</p>
+<p>驻波状态：全反射，终端短路，开路，纯电抗</p>
+<p>行驻波状态：</p>
+</blockquote>
+</li>
+<li><p><b style="color:red">阻抗匹配</b></p>
+<blockquote>
+<p>所有的微波信号传播至负载处而没有反射至源</p>
+<p>匹配的意义</p>
+<ul>
+<li><p>传输线的功率容量最大:行波状态时传输线的功率容量最大，因为不匹配时的驻波场，在波腹处的电场比传输同样功率的行波电场大得多，故而容易发生击穿，使功率容量降低</p>
+</li>
+<li><p>微波源工作稳定:行波状态时，对信号源无影响，使微波源工作稳定</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>什么是负载与线匹配</p>
+<blockquote>
+<p>调整负载与线之间的阻抗匹配，使得负载无反射</p>
+</blockquote>
+</li>
+<li><p>什么是简并模</p>
+<blockquote>
+<p>传播常数相同或者截止波长相同的传输模</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-Smith圆图"><a href="#3-Smith圆图" class="headerlink" title="3.Smith圆图"></a>3.Smith圆图</h2><ul>
+<li><p>smith圆图的基本构成</p>
+<blockquote>
+<p>反射系数的模不变，以反射系数的分量为坐标的平面，使我们可能在一有限空间表示全部工作参数Γ、Z或者Y和ρ<br>Z阻抗&#x3D;R+jX</p>
+<p>Y导纳&#x3D;G+jB</p>
+</blockquote>
+</li>
+<li><p>四分之一波长变换器</p>
+<blockquote>
+<p>实现纯电阻负载的阻抗匹配 </p>
+</blockquote>
+</li>
+<li><p>二分之一波长变换器</p>
+</li>
+<li><p>支节匹配器</p>
+<blockquote>
+<p>支节匹配器是用一定长度的终端短路或开路的均匀传输线段(简称支节)接入负载与传输线之间来实现匹配的装置。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-微波网络"><a href="#4-微波网络" class="headerlink" title="4.微波网络"></a>4.微波网络</h2><p><strong>电路参量</strong></p>
+<ul>
+<li><p>什么是阻抗矩阵Z</p>
+<blockquote>
+<p>多端口网络中电流、电压、阻抗之间的关系用矩阵表示，[U]&#x3D;[Z] [I]<br>导纳矩阵Y</p>
+<p>转移矩阵A ：总电压和总电流的关系</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>波参量</strong></p>
+<ul>
+<li><p>散射参量S</p>
+<blockquote>
+<p>定义入射波a和反射波b之间的关系,[S]两个 反射系数、传输系数</p>
+</blockquote>
+</li>
+<li><p>互易网络和无耗网络的区别</p>
+<blockquote>
+<p>互易网络的散射、导纳、阻抗矩阵都是对称矩阵；</p>
+<p>而无耗网络的散射矩阵为幺正矩阵，其他矩阵为纯虚数</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="5-天线与卫星通信"><a href="#5-天线与卫星通信" class="headerlink" title="5.天线与卫星通信"></a>5.天线与卫星通信</h2><ul>
+<li><p>天线相关的指标</p>
+<blockquote>
+<p>辐射电阻，增益系数，有效长度</p>
+</blockquote>
+</li>
+<li><p>电波传播方式</p>
+<blockquote>
+<p> 视距传播、天波传播、地面传播</p>
+</blockquote>
+</li>
+<li><p>地图导航的原理</p>
+<blockquote>
+<p>GPS:跟踪定位等数据采集操作</p>
+<p>GSM：对GPS的数据进行处理并上传</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="模电"><a href="#模电" class="headerlink" title="模电"></a>模电</h1><h2 id="1-电路基础"><a href="#1-电路基础" class="headerlink" title="1.电路基础"></a>1.电路基础</h2><ul>
+<li><p><strong>基尔霍夫电流（KCL）&#x2F;KVL</strong></p>
+<blockquote>
+<p>任意一节点流入电流之和等于流出电流之和&#x2F;闭合回路的电压和为0</p>
+</blockquote>
+</li>
+<li><p><strong>独立源与受控源的区别</strong></p>
+<blockquote>
+<p>受控源有独立源（电压源）的特性；但是受控源由控制支路的电压和电流控制，是一种无源元件</p>
+</blockquote>
+</li>
+<li><p><strong>什么是支路电流法</strong></p>
+<blockquote>
+<p>应用KCL和KVL列出方程，求解未知支路的电路</p>
+</blockquote>
+</li>
+<li><p><strong>什么是运算放大器</strong></p>
+<blockquote>
+<p>具有很高放大倍数的运算单元，输出信号为输入信号的加减、微分积分运算</p>
+</blockquote>
+</li>
+<li><p>反馈、负反馈的概念</p>
+<blockquote>
+<p>将输出信号的一部分或者全部引回到输入端</p>
+</blockquote>
+</li>
+<li><p>电路 叠加定理</p>
+<blockquote>
+<p>线性电路中每一个支路都可以看作一个电源独立作用于电路，所有的等效电源单独作用于该支路产生的代数和</p>
+</blockquote>
+</li>
+<li><p>替代定理</p>
+<blockquote>
+<p>端口的电压或电流有唯一解时，可以用一个电压源或者电流源等效代替</p>
+</blockquote>
+</li>
+<li><p><strong>戴维南定理&#x2F;诺顿定理</strong></p>
+<blockquote>
+<p>对一个独立的单口线性网络，就端口特性而言，可以等效为一个电压源和电阻串联的单口网络</p>
+</blockquote>
+</li>
+<li><p><strong>最大功率传输定理</strong></p>
+<blockquote>
+<p>负载与电源相匹配时，负载能获得最大功率的定理</p>
+</blockquote>
+</li>
+<li><p>什么是特勒根定理</p>
+<blockquote>
+<p>两个拓扑结构相同的集总参数电路中对应电流、电压乘积之和为0</p>
+</blockquote>
+</li>
+<li><p>互易定理</p>
+<blockquote>
+<p>将输入输出互换位置后，输出不因位置改变而改变</p>
+</blockquote>
+</li>
+<li><p>非线性电阻</p>
+<blockquote>
+<p>i~u特性曲线非线性</p>
+</blockquote>
+</li>
+<li><p>什么是静态工作点</p>
+<blockquote>
+<p>三极管放大电路中，交流输入信号为0时，电路处于直流状态，电压、电流对应点就是静态工作点</p>
+</blockquote>
+</li>
+<li><p>小信号分析法</p>
+<blockquote>
+<p>分析非线性电路，在静态工作点附近可以看作线性电路来分析</p>
+</blockquote>
+</li>
+<li><p>电感元件、电容元件</p>
+<blockquote>
+<p>电感：用于隔交流通直流；电容：隔直流同交流</p>
+</blockquote>
+</li>
+<li><p><strong>什么是换路定则</strong></p>
+<blockquote>
+<p>使用三要素法求解时，从$t\to0^{-}$到 $t\to0^{+}$瞬间，电容的电压不能突变，电感的电流不能突变，</p>
+</blockquote>
+</li>
+<li><p><strong>三要素法：零输入，零状态，经典法</strong></p>
+<blockquote>
+<p>零输入响应，零状态响应</p>
+</blockquote>
+</li>
+<li><p><strong>固有频率</strong></p>
+<blockquote>
+<p>当外加煽动的频率与电路固有频率相等时，会发生谐振或用来防止谐振</p>
+</blockquote>
+</li>
+<li><p>阻尼系数</p>
+<blockquote>
+<p>额定阻抗与实际阻抗的比值</p>
+</blockquote>
+</li>
+<li><p><strong>发电机的原理</strong></p>
+<blockquote>
+<p>导体在磁场中做切割磁感线，产生电流，切割磁感线的动力可以是热能、风能、核能</p>
+</blockquote>
+</li>
+<li><p>什么是三相电路</p>
+<blockquote>
+<p>三相电源 三个幅度、频率相等，相位依次相差120°的正弦电源连接而成</p>
+</blockquote>
+</li>
+<li><p>如何分析非正弦周期稳态电路</p>
+<blockquote>
+<p>用傅里叶变换分解为不同频率的正弦波信号之和，一次谐波、二次谐波分量……</p>
+</blockquote>
+</li>
+<li><p>什么是网络函数</p>
+<blockquote>
+<p>表示线性网络激励和响应关系</p>
+</blockquote>
+</li>
+<li><p>一阶RC高通低通</p>
+<blockquote>
+<p>C作输出为高通。R作输出为低通</p>
+</blockquote>
+</li>
+<li><p><strong>什么是品质因数</strong></p>
+<blockquote>
+<p>$Q&#x3D;2\pi *\frac{电路中存储的最大能量}{每一个周期消耗的能量}$</p>
+</blockquote>
+</li>
+<li><p><strong>什么是互感</strong></p>
+<blockquote>
+<p>一个线圈的电流发生变化后，临近另一线圈产生感应电动势</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-半导体基础知识"><a href="#2-半导体基础知识" class="headerlink" title="2.半导体基础知识"></a>2.半导体基础知识</h2><ul>
+<li><p>半导体的特征</p>
+<blockquote>
+</blockquote>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/EE/">EE</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/3fd43d54.html"><img class="next-cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7q9m7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">做英语阅读时看到的一句话</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://laplace2.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">laplace</div><div class="author-info__description">laplace也会有烦恼吗</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/438335054"><i class="https://laplace2.oss-cn-hangzhou.aliyuncs.com/img/20220711114122.png"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">通信原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%9A%E4%BF%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text">1.通信的基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9A%8F%E6%9C%BA%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">2.随机信号分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%A1%E6%8B%9F%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">3.模拟通信系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%9F%BA%E5%B8%A6%E4%BC%A0%E8%BE%93"><span class="toc-number">1.4.</span> <span class="toc-text">4.数字信号的基带传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E5%B8%A6%E4%BC%A0%E8%BE%93"><span class="toc-number">1.5.</span> <span class="toc-text">5.数字信号的频带传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BF%A1%E6%BA%90%E7%BC%96%E7%A0%81"><span class="toc-number">1.6.</span> <span class="toc-text">6.信源编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%BF%A1%E9%81%93%E4%B8%8E%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81"><span class="toc-number">1.7.</span> <span class="toc-text">7.信道与信道编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%89%A9%E9%A2%91%E9%80%9A%E4%BF%A1-OFDM"><span class="toc-number">1.8.</span> <span class="toc-text">8.扩频通信 OFDM</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E7%A3%81%E5%9C%BA%E4%B8%8E%E7%94%B5%E7%A3%81%E6%B3%A2"><span class="toc-number">2.</span> <span class="toc-text">电磁场与电磁波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9F%A2%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">1.矢量分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9D%99%E7%94%B5%E5%9C%BA%E4%B8%8E%E6%81%92%E5%AE%9A%E7%94%B5%E5%9C%BA"><span class="toc-number">2.2.</span> <span class="toc-text">2.静电场与恒定电场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%81%92%E5%AE%9A%E7%A3%81%E5%9C%BA"><span class="toc-number">2.3.</span> <span class="toc-text">3.恒定磁场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BA%A4%E5%8F%98%E7%94%B5%E7%A3%81%E5%9C%BA"><span class="toc-number">2.4.</span> <span class="toc-text">4.交变电磁场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9D%87%E5%8C%80%E5%B9%B3%E9%9D%A2%E6%B3%A2"><span class="toc-number">2.5.</span> <span class="toc-text">5.均匀平面波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%9D%87%E5%8C%80%E5%B9%B3%E9%9D%A2%E6%B3%A2%E7%9A%84%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%8A%98%E5%B0%84"><span class="toc-number">2.6.</span> <span class="toc-text">6.均匀平面波的反射与折射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AF%BC%E8%A1%8C%E7%94%B5%E7%A3%81%E6%B3%A2"><span class="toc-number">2.7.</span> <span class="toc-text">7.导行电磁波</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%B3%A2%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">微波原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%B5%E7%A3%81%E5%9C%BA%E7%90%86%E8%AE%BA"><span class="toc-number">3.1.</span> <span class="toc-text">1.电磁场理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E8%BE%93%E7%BA%BF%E7%9A%84%E7%89%B9%E5%BE%81%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">2.传输线的特征参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Smith%E5%9C%86%E5%9B%BE"><span class="toc-number">3.3.</span> <span class="toc-text">3.Smith圆图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BE%AE%E6%B3%A2%E7%BD%91%E7%BB%9C"><span class="toc-number">3.4.</span> <span class="toc-text">4.微波网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%A4%A9%E7%BA%BF%E4%B8%8E%E5%8D%AB%E6%98%9F%E9%80%9A%E4%BF%A1"><span class="toc-number">3.5.</span> <span class="toc-text">5.天线与卫星通信</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%94%B5"><span class="toc-number">4.</span> <span class="toc-text">模电</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80"><span class="toc-number">4.1.</span> <span class="toc-text">1.电路基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">4.2.</span> <span class="toc-text">2.半导体基础知识</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/434ccb04.html" title="fushi"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="fushi"/></a><div class="content"><a class="title" href="/posts/434ccb04.html" title="fushi">fushi</a><time datetime="2023-03-18T07:26:09.000Z" title="发表于 2023-03-18 15:26:09">2023-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3fd43d54.html" title="做英语阅读时看到的一句话"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7q9m7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="做英语阅读时看到的一句话"/></a><div class="content"><a class="title" href="/posts/3fd43d54.html" title="做英语阅读时看到的一句话">做英语阅读时看到的一句话</a><time datetime="2022-09-13T12:47:59.526Z" title="发表于 2022-09-13 20:47:59">2022-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/72fee242.html" title="ChangeLog"><img src="https://w.wallhaven.cc/full/nz/wallhaven-nzymgv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChangeLog"/></a><div class="content"><a class="title" href="/posts/72fee242.html" title="ChangeLog">ChangeLog</a><time datetime="2022-07-14T12:40:05.000Z" title="发表于 2022-07-14 20:40:05">2022-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d87f7e0c.html" title="test"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="test"/></a><div class="content"><a class="title" href="/posts/d87f7e0c.html" title="test">test</a><time datetime="2022-07-11T01:40:13.000Z" title="发表于 2022-07-11 09:40:13">2022-07-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/0.html" title="无题"><img src="https://w.wallhaven.cc/full/z8/wallhaven-z8dg9y.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/posts/0.html" title="无题">无题</a><time datetime="2022-07-10T15:23:13.117Z" title="发表于 2022-07-10 23:23:13">2022-07-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By laplace</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script></div></body></html>
